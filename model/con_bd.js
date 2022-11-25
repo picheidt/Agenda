@@ -1,6 +1,5 @@
 let mysql=require('mysql');
 
-function conn(){
     let connection = mysql.createConnection({
         host:'localhost',
         user:'root',
@@ -8,15 +7,16 @@ function conn(){
         port:3306,
         database: 'agenda'
     })
-    return connection.connect()
-}
-// connection.connect();
 
-//   connection.end(function(err) {
-//     if (err) {
-//       return console.log('error:' + err.message);
-//     }
-//     console.log('Close the database connection.');
-//   });
+    
+    connection.connect(function(err) {
+        if (err) {
+            return console.error('error: ' + err.message);
+        }
+        console.log('Connected to the MySQL server.'); 
+    });
+    
+    module.exports = connection; 
 
-//   connection.destroy(); 
+    
+      
