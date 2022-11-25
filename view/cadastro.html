@@ -46,7 +46,7 @@
                 <thead>
                     <tr>
                         <th>
-                            <h1>Novo Contato</h1>
+                            <h1><center>Novo Contato</center></h1>
                         </th>
 
                     </tr>
@@ -58,28 +58,47 @@
             </table>
             <form name="NovoContato">
 
-                <label for="nome"><h5>Nome</h5></label>
+                <label for="nome">
+                    <h5>Nome</h5>
+                </label>
                 <br>
-                <input type="text" id="idnome" placeholder="" required="required" name="nome" />
-                <br>
-                <br>              
-
-                <label for="fone"><h5>Telefone</h5></label>
-                <br>
-                <input type="tel" id="idfone" placeholder="" required="required" name="fone" />
+                <input type="text" id="idnome" placeholder="" required="required" name="nome" size="50" />
                 <br>
                 <br>
-
-                <label for="email"><h5>E-mail</h5></label>              
+                <label for="email">
+                    <h5>E-mail</h5>
+                </label>
                 <br>
-                <input type="email" id="idemail" placeholder="" required="required" name="email" />
+                <input type="email" id="idemail" placeholder="" required="required" name="email" size="50" />
                 <br>
-                <br>                     
+                <br>
+                <label for="fone">
+                    <h5>Telefone</h5>
+                </label>
+                <br>
+                <input type="tel" id="idfone" placeholder="" required="required" name="fone" size="30" />
+                <br>
+                <br>
                 <input type="submit" class="enviar" onclick="Salvar();" value="Salvar Contato" />
-              </form>
+            </form>
         </main>
     </div>
 </body>
 
 
 </html>
+
+<!-- Funções -->
+<script>
+    function Salvar() {
+        try {
+            var nome = window.document.getElementById('idnome').value
+            var email = window.document.getElementById('idemail').value
+            var tel = windows.document.getElementById('idfone').value
+            connection.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?)", [nome, email, tel])
+            window.alert('Contato Salvo!')
+        } catch (error) {
+            window.alert('Erro ao salvar contato:' + error)
+        }
+    }
+</script>
