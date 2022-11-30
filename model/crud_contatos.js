@@ -9,7 +9,7 @@ function salvar(nome, email, tel) {
 
 function editar(nome, sobrenome, email, tel) {
     try {
-        connection.query("UPDADE Contatos SET colunm = (nome, email, telefone) VALUES (?, ?, ?)where id = (?)", 
+        connection.query("UPDADE Contatos SET colunm = (nome, email, telefone) VALUES (?, ?, ?)where id = 1", 
         [nome, email, tel])
         window.alert('Contato Editado!')
     } catch (error) {

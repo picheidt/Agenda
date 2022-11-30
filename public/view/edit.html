@@ -57,30 +57,30 @@
 
                 </tbody>
             </table>
-            <form name="EditarContato">
+            <form name="EditarContato" method="post" action="updateContato">
 
                 <label for="nome">
                     <h5>Nome</h5>
                 </label>
                 <br>
-                <input type="text" id="idnome" placeholder="" required="required" name="nome" size="50" />
+                <input value="{{nome}}" type="text" id="idnome" placeholder="" required="required" name="nome" size="50" />
                 <br>
                 <br>
                 <label for="email">
                     <h5>E-mail</h5>
                 </label>
                 <br>
-                <input type="email" id="idemail" placeholder="" required="required" name="email" size="50" />
+                <input value="{{email}}" type="email" id="idemail" placeholder="" required="required" name="email" size="50" />
                 <br>
                 <br>
                 <label for="fone">
                     <h5>Telefone</h5>
                 </label>
                 <br>
-                <input type="tel" id="idfone" placeholder="" required="required" name="fone" size="30" />
+                <input value="{{telefone}}" type="tel" id="idfone" placeholder="" required="required" name="fone" size="30" />
                 <br>
                 <br>
-                <input type="submit" class="Editar" onclick="Editar();" value="Gravar Contato" />
+                <button type="submit" class="Editar" value="Gravar Contato">
             </form>
         </main>
     </div>
@@ -90,7 +90,4 @@
 </html>
 
 <!--    chamar função <3 
-        var nome = window.document.getElementById('idnome').value
-        var sobrenome = window.document.getElementById('idsobrenome').value
-        var email = window.document.getElementById('idemail').value
-        var tel = windows.document.getElementById('idfone').value -->
+         -->
