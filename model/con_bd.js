@@ -1,13 +1,11 @@
-require("dotenv-safe").config();
-
-let mysql=require('mysql2');
+let mysql=require('mysql');
 
     let connection = mysql.createConnection({
-        host: process.env.HOST,
-        user: process.env.USER,
-        password: process.env.PASS,
-        port: process.env.PORT,
-        database: process.env.DATABASE
+        host:'localhost',
+        user:'root',
+        password:'1234',
+        port:3306,
+        database: 'agenda'
     })
 
     
