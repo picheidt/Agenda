@@ -33,21 +33,6 @@ router.get('/listar_contatos', verifyToken, (req, res)=>{
     res.send({teste:'oi'})
 })
 
-
-router.post('/login', bodyParser,(req, res)=>{
-
-    if (req.body.user === 'Vinicius' && req.body.pass === '123456') {
-        const id = 4
-        const token = jwt.sign({id}, process.env.SECRET,{
-            expiresIn: 5000
-        })
-        res.cookie('x-access-token', token)
-        res.redirect('/contatos')
-    }else{
-        res.status(403).json({msg:'login inválido'})
-    }
-})
-
 router.get('/', (req, res)=>{
     res.render('login.html')
 })
