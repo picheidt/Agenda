@@ -88,17 +88,3 @@
 
 </html>
 
-<!-- Funções -->
-<script>
-    function Salvar() {
-        try {
-            var nome = window.document.getElementById('idnome').value
-            var email = window.document.getElementById('idemail').value
-            var tel = windows.document.getElementById('idfone').value
-            connection.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?)", [nome, email, tel])
-            window.alert('Contato Salvo!')
-        } catch (error) {
-            window.alert('Erro ao salvar contato:' + error)
-        }
-    }
-</script>
