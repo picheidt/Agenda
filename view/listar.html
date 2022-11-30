@@ -13,12 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="application/javascript" src="resources/js/ajax.js"></script>
+    <script src="../test.js"></script>
     <title>Listar Contatos</title>
 </head>
 
-<body onload="listar_contatos()">
+<body onload="teste()">
     <div class="container">
         <nav role="navigation" id="Navegador" class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
             <div class="container px-4">
@@ -30,11 +29,11 @@
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="justify-content-end navbar-nav ms-auto">
-                        <li class="nav-item"><a title="#" href="home.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a title="" href="#" class="nav-link">Home</a></li>
                         
-                        <li class="nav-item"><a href="cadastro.html" class="nav-link" title="">Novo Contato</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link" title="">Novo Contato</a></li>
                         
-                        <li class="nav-item"><a title="" href="listar.html" class="nav-link active">Contatos</a></li>
+                        <li class="nav-item"><a title="" href="#" class="nav-link active">Contatos</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +42,7 @@
 
     <div class="container-fluid pt-5 mt-5">
         <main class="container">
-            <table class="table">
+            <table class="table" id="a">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -55,7 +54,7 @@
                     </tr>
                 </thead>
 
-                <tbody id="table_listar">
+                <tbody id="table">
 
                 </tbody>
             </table>
