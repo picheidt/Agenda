@@ -26,4 +26,11 @@ function listar() {
     }
 }
 
+/*
+function excluir(id_contato, id_usuario){
+    try{
+        connection.query("DELETE FROM ")
+    }
+}
+*/
 module.exports = [listar, editar, salvar]
