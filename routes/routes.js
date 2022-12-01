@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser').urlencoded({extended:false})
 const verifyToken = require('../middleware/middleware')
-// rota que retorna a tela de listar
+
+
 
 router.get('/login', bodyParser, (req, res) => {
     
