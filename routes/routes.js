@@ -32,14 +32,15 @@ router.post('/updateContato', (req, res) =>{
 })
 
 
-router.get('/cadastro', verifyToken, (req, res) =>{
+router.get('/cadastro', (req, res) =>{
     res.render('cadastro.html')
 })
 
 router.post('/salvar_contato', (req,res) =>{
+    console.log(contatos)
     var nome = req.body.nome
     var email = req.body.email
-    var tel = req.body.tel
+    var tel = req.body.fone
     contatos.salvar(nome, email, tel)
 })
 

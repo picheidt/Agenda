@@ -1,3 +1,5 @@
+var connection = require('./con_bd')
+
 function salvar(nome, email, tel) {
     try {
         connection.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?)", [nome, email, tel])
