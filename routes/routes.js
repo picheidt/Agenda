@@ -2,10 +2,13 @@ const express = require('express')
 const router = express.Router()
 const verifyToken = require('../middleware/middleware')
 var contatos = require('../model/crud_contatos')
+var login = require('../model/crud_login')
 // rota que retorna a tela de listar
 
-router.get('/login', (req, res) => {
-    
+router.post('/login', (req, res) => {
+    email = req.body.email;
+    senha = req.body.password;
+    login(email, senha);
 })
 
 router.get('/contatos', verifyToken, (req, res)=>{
