@@ -5,7 +5,7 @@ var contatos = require('../model/crud_contatos')
 // rota que retorna a tela de listar
 
 router.get('/login', (req, res) => {
-    
+    console.log(contatos)
 })
 
 router.get('/contatos', verifyToken, (req, res)=>{
@@ -18,8 +18,7 @@ router.get('/', (req, res)=>{
 })
 
 // adicionar o tolkien depois de testar
-router.get('/edita', (req, res) => {
-    res.render('edit.html', {id:1, nome:'?', telefone:'?', email:'?'})
+    router.get('/edita', (req, res) => {
 })
 
 router.post('/updateContato', (req, res) =>{
@@ -29,7 +28,6 @@ router.post('/updateContato', (req, res) =>{
     var email = req.body.email
     var fone = req.body.fone
     res.render('listar')
-    console.log(contatos)
     contatos(nome, email, fone, id_contato);
 })
 

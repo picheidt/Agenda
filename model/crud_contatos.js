@@ -8,17 +8,15 @@ function salvar(nome, email, tel) {
         window.alert('Erro ao salvar contato:' + error)
     }
 }
-// module.exports = salvar;
 
 function editar(nome, email, tel, id_contato) {
     try {
         connection.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ?", 
         [nome, email, tel, id_contato])
-    } catch (e) {
-        res.send()
+    } catch (error) {
+        res.send('Erro ao editar contato' + error)
     }
 }
-module.exports = editar;
 
 function listar() {
     try {
@@ -28,4 +26,4 @@ function listar() {
     }
 }
 
-// module.exports = listar;
+module.exports = [listar, editar, salvar]
