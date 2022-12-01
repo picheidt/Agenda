@@ -3,13 +3,15 @@ var connection = require('./con_bd')
 function salvar(nome, email, tel) {
     try {
         connection.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?)", [nome, email, tel])
-        window.alert('Contato Salvo!')
+        console.log('certo')
+        // window.alert('Contato Salvo!')
     } catch (error) {
-        window.alert('Erro ao salvar contato:' + error)
+        console.log('errado')
+        // window.alert('Erro ao salvar contato:' + error)
     }
 }
 
-function editar(nome, sobrenome, email, tel) {
+function editar(nome, email, tel) {
     try {
         connection.query("UPDADE Contatos SET colunm = (nome, email, telefone) VALUES (?, ?, ?)where id = 1", 
         [nome, email, tel])
@@ -27,6 +29,6 @@ function listar() {
     }
 }
 
-module.exports = salvar
-module.exports = editar
-module.exports = listar
+module.exports.salvar = salvar
+module.exports.editar = editar
+module.exports.listar = listar
