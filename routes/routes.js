@@ -17,7 +17,7 @@ router.get('/', (req, res)=>{
     res.render('login.html')
 })
 
-router.get('/cadastro', verifyToken, (req, res) =>{
+router.get('/cadastro', (req, res) =>{
     res.render('cadastro.html')
 })
 
