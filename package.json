@@ -26,5 +26,6 @@
     "mustache": "^4.2.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20"
-  }
+  },
+  "devDependencies": {}
 }
