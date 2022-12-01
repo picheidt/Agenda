@@ -17,16 +17,20 @@ router.get('/', (req, res)=>{
     res.render('login.html')
 })
 
-
+// adicionar o tolkien depois de testar
 router.get('/edita', (req, res) => {
-    res.render('edit.html', {id:1, nome:'aa', telefone:'4546', email:'vincius@dskhjk.com'})
+    res.render('edit.html', {id:1, nome:'?', telefone:'?', email:'?'})
 })
 
 router.post('/updateContato', (req, res) =>{
+    // resolver como passar o id
+    var id_contato = req.body.id_contato
     var nome = req.body.nome
     var email = req.body.email
     var fone = req.body.fone
-    contatos.editar(nome, email, fone);
+    res.render('listar')
+    console.log(contatos)
+    contatos(nome, email, fone, id_contato);
 })
 
 
@@ -38,7 +42,7 @@ router.post('/salvar_contato', (req,res) =>{
     var nome = req.body.nome
     var email = req.body.email
     var tel = req.body.tel
-    contatos.salvar(noem, email, tel)
+    contatos.salvar(nome, email, tel)
 })
 
 module.exports = router

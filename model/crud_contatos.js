@@ -8,16 +8,17 @@ function salvar(nome, email, tel) {
         window.alert('Erro ao salvar contato:' + error)
     }
 }
+// module.exports = salvar;
 
-function editar(nome, sobrenome, email, tel) {
+function editar(nome, email, tel, id_contato) {
     try {
-        connection.query("UPDADE Contatos SET colunm = (nome, email, telefone) VALUES (?, ?, ?)where id = 1", 
-        [nome, email, tel])
-        window.alert('Contato Editado!')
-    } catch (error) {
-        window.alert('Erro ao editar contato:' + error)
+        connection.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ?", 
+        [nome, email, tel, id_contato])
+    } catch (e) {
+        res.send()
     }
 }
+module.exports = editar;
 
 function listar() {
     try {
@@ -27,6 +28,4 @@ function listar() {
     }
 }
 
-module.exports = salvar
-module.exports = editar
-module.exports = listar
+// module.exports = listar;
