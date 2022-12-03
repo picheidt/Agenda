@@ -6,7 +6,7 @@ function logar(req, res) {
     const login = req.body.email
     const pass = req.body.password
     try {
-        conn.query('SELECT id_usuarios FROM usuarios WHERE login = ? AND senha = ?', [login, pass],function(err, result){
+        conn.query('SELECT id_usuarios FROM usuario WHERE login = ? AND senha = ?', [login, pass],function(err, result){
             if(err){
                res.render('error_500.html')
             }else{
