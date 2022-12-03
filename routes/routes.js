@@ -9,12 +9,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res)=>{
-    message = req.query.status
-    if (message==403){
-        res.render('login.html', {msg:'Acesso Negado'})
-    }else{
-        res.render('login.html', {msg:''})
-    }
+    res.render('login.html', {message: req.flash('message')})
 })
 
 router.post('/logar', (req, res) => {

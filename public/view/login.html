@@ -29,10 +29,10 @@
             <form style="width: 23rem;" method="POST" action="logar">
               <div id="msg"></div>
               <script>
-                let msg = "{{msg}}"
+                let msg = "{{message}}"
                 console.log(msg)
                 if (msg != '') {
-                  document.getElementById('msg').innerHTML = '<p class="alert alert-danger alert-dismissible fade show fw-normal mb-3 pb-3">{{msg}}</p>'
+                  document.getElementById('msg').innerHTML = '<p class="alert alert-danger alert-dismissible fade show fw-normal mb-3 pb-3">{{message}}</p>'
                 }
               </script>
               <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Entre</h3>

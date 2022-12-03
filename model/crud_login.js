@@ -6,7 +6,7 @@ function logar(req, res) {
     const login = req.body.email
     const pass = req.body.password
     try {
-        conn.query('SELECT id_usuarios FROM usuario WHERE login = ? AND senha = ?', [login, pass],function(err, result){
+        conn.query('SELECT id_usuario FROM usuario WHERE login = ? AND senha = ?', [login, pass],function(err, result){
             if(err){
                res.render('error_500.html')
             }else{
@@ -15,7 +15,8 @@ function logar(req, res) {
                     res.cookies('x-access-token', token)
                     res.redirect('listar_contatos')
                 }else{
-                    res.redirect('login?status=403')
+                    req.flash('message', 'Login ou senha inválidos')
+                    res.redirect('login')
                 }
             }
         })    
