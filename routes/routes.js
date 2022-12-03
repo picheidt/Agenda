@@ -1,27 +1,35 @@
 const express = require('express')
 const router = express.Router()
 const verifyToken = require('../middleware/middleware')
-var contatos = require('../model/crud_contatos')
-var login = require('../model/crud_login')
+const login = require('../model/crud_login')
 // rota que retorna a tela de listar
 
-router.post('/login', (req, res) => {
-    email = req.body.email;
-    senha = req.body.password;
-    login(email, senha);
+router.get('/', (req, res) => {
+    res.redirect('/login')
 })
+
+router.get('/login', (req, res)=>{
+    message = req.query.status
+    if (message==403){
+        res.render('login.html', {msg:'Acesso Negado'})
+    }else{
+        res.render('login.html', {msg:''})
+    }
+})
+
+router.post('/logar', (req, res) => {
+    login.confere_login(req, res)
+})
+
 
 router.get('/contatos', verifyToken, (req, res)=>{
     res.render('listar.html')
 })
 
 
-router.get('/', (req, res)=>{
-    res.render('login.html')
-})
 
 // adicionar o tolkien depois de testar
-    router.get('/edita', (req, res) => {
+    router.get('/editar_contato', (req, res) => {
 })
 
 router.post('/updateContato', (req, res) =>{
