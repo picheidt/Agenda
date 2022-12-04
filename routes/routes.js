@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const verifyToken = require('../middleware/middleware')
 const login = require('../model/crud_login')
-// rota que retorna a tela de listar
+const contatos = require('../controller/contatos.controller')
+const token_controller = require('../controller/token_controller')
+const verifyToken = token_controller.verify_token
+
 
 router.get('/', (req, res) => {
     res.redirect('/login')
@@ -16,6 +18,12 @@ router.post('/logar', (req, res) => {
     login.confere_login(req, res)
 })
 
+router.get('/contatos', verifyToken, (req, res) =>{
+    contatos.listar_contatos(req, res)
+})
+
+
+// rotas ainda não prontas
 
 router.get('/contatos', verifyToken, (req, res)=>{
     res.render('listar.html')
@@ -23,7 +31,7 @@ router.get('/contatos', verifyToken, (req, res)=>{
 
 
 
-// adicionar o tolkien depois de testar
+// adicionar o tolken depois de testar
     router.get('/editar_contato', (req, res) => {
 })
 
@@ -50,4 +58,8 @@ router.post('/salvar_contato', (req,res) =>{
     contatos.salvar(nome, email, tel)
 })
 
+// redireciona todas as rotas não existentes para a página de página não encontrada
+router.get('*', (req, res) => {
+    res.render('error/error_404.html')
+})
 module.exports = router

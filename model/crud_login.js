@@ -8,12 +8,12 @@ function logar(req, res) {
     try {
         conn.query('SELECT id_usuario FROM usuario WHERE login = ? AND senha = ?', [login, pass],function(err, result){
             if(err){
-               res.render('error_500.html')
+               res.render('error/error_500.html')
             }else{
                 if (result.length>0) {
-                    const token = controller_token.get_token(result[0]['id_usuarios'])
-                    res.cookies('x-access-token', token)
-                    res.redirect('listar_contatos')
+                    const token = controller_token.get_token(result[0]['id_usuario'])
+                    res.cookie('x-access-token', token)
+                    res.redirect('contatos')
                 }else{
                     req.flash('message', 'Login ou senha inválidos')
                     res.redirect('login')
@@ -21,7 +21,7 @@ function logar(req, res) {
             }
         })    
     } catch (error) {
-        res.render('error_500.html')   
+        res.render('error/error_500.html')   
     }
 }
 
