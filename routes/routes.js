@@ -18,6 +18,10 @@ router.post('/logar', (req, res) => {
     login_controller.logar(req, res)
 })
 
+router.get('/logout', verifyToken, (req, res) => {
+    token_controller.invalidate_token(req, res)
+})
+
 router.get('/contatos', verifyToken, (req, res) =>{
     res.render('listar.html')
 })

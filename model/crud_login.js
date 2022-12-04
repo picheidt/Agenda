@@ -1,4 +1,4 @@
-const conexao = require('./con_bd');
+const conexao = require('./con_bd')
 const deasync = require('deasync')
 function confere_login(login, pass) {
     var result_db = null

@@ -17,3 +17,9 @@ CONSTRAINT FK_contatos_usuario foreign key (id_usuario) references usuario (id_u
 );
 
 
+CREATE table token_black_list(
+	id_token int primary key not null auto_increment,
+    token varchar(255) not null
+);
+
+
