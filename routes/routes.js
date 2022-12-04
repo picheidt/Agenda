@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const login = require('../model/crud_login')
-const contatos = require('../controller/contatos.controller')
+const login_controller = require('../controller/login_controller')
+const contatos_controller = require('../controller/contatos.controller')
 const token_controller = require('../controller/token_controller')
 const verifyToken = token_controller.verify_token
 
@@ -15,19 +15,19 @@ router.get('/login', (req, res)=>{
 })
 
 router.post('/logar', (req, res) => {
-    login.confere_login(req, res)
+    login_controller.logar(req, res)
 })
 
 router.get('/contatos', verifyToken, (req, res) =>{
-    contatos.listar_contatos(req, res)
+    res.render('listar.html')
 })
 
+router.get('/listar_contatos', verifyToken, (req, res) => {
+    res.send(contatos_controller.buscar_contatos(req, res))
+})
 
 // rotas ainda não prontas
 
-router.get('/contatos', verifyToken, (req, res)=>{
-    res.render('listar.html')
-})
 
 
 
@@ -42,7 +42,7 @@ router.post('/updateContato', (req, res) =>{
     var email = req.body.email
     var fone = req.body.fone
     res.render('listar')
-    contatos(nome, email, fone, id_contato);
+    contatos_controller(nome, email, fone, id_contato);
 })
 
 
@@ -55,7 +55,7 @@ router.post('/salvar_contato', (req,res) =>{
     var nome = req.body.nome
     var email = req.body.email
     var tel = req.body.fone
-    contatos.salvar(nome, email, tel)
+    contatos_controller.salvar(nome, email, tel)
 })
 
 // redireciona todas as rotas não existentes para a página de página não encontrada

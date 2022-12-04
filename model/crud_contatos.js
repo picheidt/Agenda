@@ -1,4 +1,5 @@
-var connection = require('./con_bd')
+const connection = require('./con_bd')
+const deasync = require('deasync')
 
 function salvar(nome, email, tel) {
     try {
@@ -11,6 +12,26 @@ function salvar(nome, email, tel) {
     }
 }
 
+function listar(id) {
+    conn = connection()
+    contatos = null
+    try {
+        conn.query("SELECT id_contato, nome, telefone, email FROM contatos WHERE id_usuario = ?", [id], function(err, result){
+            if (err) {
+                contatos = false                
+            }else{
+                contatos = result
+            }
+        })
+        while ((contatos == null)) {
+            deasync.runLoopOnce()
+        }
+        return contatos
+    } catch (error) {
+        return false        
+    }
+}
+
 function editar(nome, email, tel, id_contato) {
     try {
         connection.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ?", 
@@ -20,13 +41,6 @@ function editar(nome, email, tel, id_contato) {
     }
 }
 
-function listar() {
-    try {
-        connection.query("SELECT id_contato, nome, telefone, email FROM Contatos")
-    } catch (error) {
-        window.alert('Erro ao buscar contatos:' + error)
-    }
-}
 
 /*
 function excluir(id_contato, id_usuario){

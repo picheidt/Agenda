@@ -1,30 +1,16 @@
 require("dotenv-safe").config();
-const jwt = require('jsonwebtoken');
-const conexao = require('../model/con_bd')
+const token_controller = require('./token_controller')
+const crud_contatos = require('../model/crud_contatos')
 
 function buscar_contatos(req, res) {
-    const token = req.cookies['x-access-token']
-    jwt.verify(token, process.env.SECRET, function (err, decoded) {
-        const id = decoded.id
-        conn = conexao()
-        try {
-            conn.query('SELECT id_contato, nome, email, telefone FROM contatos WHERE id_usuario = ? ', [id], function (err, result) {
-                if (err) {
-                    res.render('error/error_500.html')
-                }else{
-                    let contatos_str = ''
-                    result.forEach(contato => {
-                        contatos_str += '{"id":"'+contato.id_contato+'","nome":"'+contato.nome+'","email":"'+contato.email+'","telefone":"'+contato.telefone+'"};'
-                    });
-                    res.cookie('contatos', contatos_str)
-                    res.render('listar.html', {contatos: contatos_str})
-                }
-            })
-        } catch (error) {
-            console.log(error)
-            res.render('error/error_500.html')
-        }
-    })
+    token = req.cookies['x-access-token']
+    var id = token_controller.get_id(token)
+    result = crud_contatos.listar(id)
+    if (result==false){
+        res.render('error/error_500.html')
+    }else{
+        return result
+    }
 }
 
-module.exports.listar_contatos = buscar_contatos
+module.exports.buscar_contatos = buscar_contatos

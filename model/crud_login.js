@@ -1,28 +1,26 @@
 const conexao = require('./con_bd');
-const controller_token = require('../controller/token_controller')
-
-function logar(req, res) {
-    const conn = conexao()
-    const login = req.body.email
-    const pass = req.body.password
+const deasync = require('deasync')
+function confere_login(login, pass) {
+    var result_db = null
     try {
+        conn = conexao()
         conn.query('SELECT id_usuario FROM usuario WHERE login = ? AND senha = ?', [login, pass],function(err, result){
             if(err){
-               res.render('error/error_500.html')
+                result_db = false
             }else{
-                if (result.length>0) {
-                    const token = controller_token.get_token(result[0]['id_usuario'])
-                    res.cookie('x-access-token', token)
-                    res.redirect('contatos')
-                }else{
-                    req.flash('message', 'Login ou senha inválidos')
-                    res.redirect('login')
-                }
+                result_db = result               
             }
-        })    
+            return result_db
+        })
+        
+        while ((result_db==null)) {
+            deasync.runLoopOnce()
+        }
+           
+        return result_db
     } catch (error) {
-        res.render('error/error_500.html')   
+        return false   
     }
 }
 
-module.exports.confere_login = logar
+module.exports.confere_login = confere_login
