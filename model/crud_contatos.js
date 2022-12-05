@@ -33,9 +33,9 @@ function listar(id) {
 }
 
 function editar(nome, email, tel, id_contato) {
+    conn = connection()
     try {
-        connection.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ?", 
-        [nome, email, tel, id_contato])
+        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ?", [nome, email, tel, id_contato],)
     } catch (error) {
         res.send('Erro ao editar contato' + error)
     }

@@ -32,11 +32,8 @@ router.get('/listar_contatos', verifyToken, (req, res) => {
 
 // rotas ainda não prontas
 
-
-
-
-// adicionar o tolken depois de testar
-    router.get('/editar_contato', (req, res) => {
+router.get('/editar_contato', verifyToken, (req, res) => {
+    res.send(contatos_controller.editar_contato(req, res))
 })
 
 router.post('/updateContato', (req, res) =>{
