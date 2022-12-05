@@ -34,14 +34,16 @@ function editar_contato(req, res) {
     }
 }
 
-function excluir_contato(req_res){
+function excluir_contato(req, res){
     token = req.cookies['x-access-token']
-    var id = token_controller.get_id(token)
+    var id_usuario = token_controller.get_id(token)
+    var id_contato = req.query.id_contato
     result = crud_contatos.excluir(id_contato, id_usuario)
     if(result == false){
         res.render("error/error_500.html")
     } else {
-        return result
+        req.flash('message', 'Contato excluido com sucesso')
+        res.redirect('contatos')
     }
 }
 

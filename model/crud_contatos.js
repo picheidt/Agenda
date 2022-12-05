@@ -45,9 +45,10 @@ function editar(id, nome, email, tel, id_contato) {
 function excluir(id_contato, id_usuario){
     conn = connection()
     try{
-        connection.query("DELETE FROM contatos WHERE id_contato = ?", [id_contato]);
+        conn.query("DELETE FROM contatos WHERE id_contato = ? AND id_usuario = ?;", [id_contato, id_usuario]);
     } catch (error){
-        res.send("Erro ao excluir contato" + error);
+        console.log(error)
+        return false
     }
 }
 
