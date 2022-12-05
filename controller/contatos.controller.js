@@ -29,7 +29,7 @@ function editar_contato(req, res) {
 function excluir_contato(req_res){
     token = req.cookies['x-access-token']
     var id = token_controller.get_id(token)
-    result = crud_contatos.excluir(id_contato)
+    result = crud_contatos.excluir(id_contato, id_usuario)
     if(result == false){
         res.render("error/error_500.html")
     } else {
