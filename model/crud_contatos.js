@@ -1,14 +1,12 @@
 const connection = require('./con_bd')
 const deasync = require('deasync')
 
-function salvar(nome, email, tel) {
+function salvar(id, nome, email, tel) {
+    conn = connection()
     try {
-        connection.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?)", [nome, email, tel])
-        console.log('certo')
-        // window.alert('Contato Salvo!')
+        conn.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?) where id_usuario = ?", [id, nome, email, tel])
     } catch (error) {
-        console.log('errado')
-        // window.alert('Erro ao salvar contato:' + error)
+        res.send('Erro ao editar contato' + error)
     }
 }
 
@@ -32,10 +30,10 @@ function listar(id) {
     }
 }
 
-function editar(nome, email, tel, id_contato) {
+function editar(id, nome, email, tel, id_contato) {
     conn = connection()
     try {
-        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ?", [nome, email, tel, id_contato],)
+        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ? and id_usuario = ?", [id, nome, email, tel, id_contato],)
     } catch (error) {
         res.send('Erro ao editar contato' + error)
     }
