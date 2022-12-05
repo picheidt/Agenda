@@ -4,7 +4,7 @@ const deasync = require('deasync')
 function salvar(id, nome, email, tel) {
     conn = connection()
     try {
-        conn.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?) where id = ?", [id, nome, email, tel])
+        conn.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?) where id_usuario = ?", [id, nome, email, tel])
     } catch (error) {
         res.send('Erro ao editar contato' + error)
     }
@@ -33,7 +33,7 @@ function listar(id) {
 function editar(id, nome, email, tel, id_contato) {
     conn = connection()
     try {
-        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ? and id = ?", [id, nome, email, tel, id_contato],)
+        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ? and id_usuario = ?", [id, nome, email, tel, id_contato],)
     } catch (error) {
         res.send('Erro ao editar contato' + error)
     }
