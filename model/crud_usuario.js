@@ -23,13 +23,18 @@ function confere_login(login, pass) {
     }
 }
 
-function salvar(nome, email, tel) {
+function salvar_usuario(login, pass) {
+
+    var login = req.body.nome
+    var pass = req.body.email
+    
     try {
-        connection.query("INSERT INTO usuario(login,senha) VALUES (?, ?)", [nome, email, tel])
-        window.alert('Usuário Salvo!')
+        connection.query("INSERT INTO usuario(login,senha) VALUES (?, ?)", [login, pass])
+        
     } catch (error) {
-        window.alert('Erro ao salvar Usuário:' + error)
+        return false
     }
 }
 
 module.exports.confere_login = confere_login
+module.exports. salvar_usuario =  salvar_usuario

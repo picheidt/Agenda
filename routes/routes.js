@@ -22,6 +22,14 @@ router.get('/logout', verifyToken, (req, res) => {
     token_controller.invalidate_token(req, res)
 })
 
+router.get('/registre-se', (req, res)=>{
+    res.render('registre-se.html')
+})
+
+router.post('/cadastrar_usuario', (req, res)=>{
+    usuario_controller.cadastrar_usuario(req, res)
+})
+
 //Cadastro 
 
 router.get('/novo_contato', verifyToken, (req, res) =>{
