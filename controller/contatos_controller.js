@@ -14,3 +14,16 @@ function buscar_contatos(req, res) {
 }
 
 module.exports.buscar_contatos = buscar_contatos
+
+function editar_contato(req, res) {
+    token = req.cookies['x-access-token']
+    var id = token_controller.get_id(token)
+    result = crud_contatos.editar(nome, email, tel, id_contato)
+    if (result==false){
+        res.render('error/error_500.html')
+    }else{
+        return result
+    }
+}
+
+module.exports.editar_contato = editar_contato
