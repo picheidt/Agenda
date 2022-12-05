@@ -22,8 +22,7 @@ router.get('/logout', verifyToken, (req, res) => {
     token_controller.invalidate_token(req, res)
 })
 
-//Cadastro 
-
+// Contatos
 router.get('/novo_contato', verifyToken, (req, res) =>{
     res.render('cadastro.html')
 })
@@ -31,8 +30,6 @@ router.get('/novo_contato', verifyToken, (req, res) =>{
 router.post('/salvar_contato', verifyToken, (req,res) =>{
     contatos_controller.salvar_contato(req, res)
 })
-
-// Contatos
 
 router.get('/contatos', verifyToken, (req, res) =>{
     res.render('listar.html', {message: req.flash('message')})
@@ -46,11 +43,15 @@ router.post('/editar_contato', verifyToken, (req, res) => {
     res.render(contatos_controller.editar_contato(req, res))
 })
 
-router.post('/excluir_contato', verifyToken, (req_res) => {
-    var id_contato = req.body.id_contato
-    var id_usuario = req.body.id_usuario
-    contatos_controller.excluir_contato(id_contato, id_usuario)
+
+router.get('/excluir_contato', verifyToken, (req, res) => {
+    contatos_controller.excluir_contato(req, res)
 })
+
+
+
+
+
 
 // redireciona todas as rotas não existentes para a página de página não encontrada
 router.get('*', (req, res) => {
