@@ -59,8 +59,15 @@ router.post('/salvar_contato', (req,res) =>{
     contatos_controller.salvar(nome, email, tel)
 })
 
+router.post('/excluir_contato', verifyToken, (req_res) => {
+    var id_contato = req.body.id_contato
+    var id_usuario = req.body.id_usuario
+    contatos_controller.excluir_contato(id_contato, id_usuario)
+})
+
 // redireciona todas as rotas não existentes para a página de página não encontrada
 router.get('*', (req, res) => {
     res.render('error/error_404.html')
 })
+
 module.exports = router

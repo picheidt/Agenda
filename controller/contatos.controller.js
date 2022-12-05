@@ -26,4 +26,16 @@ function editar_contato(req, res) {
     }
 }
 
+function excluir_contato(req_res){
+    token = req.cookies['x-access-token']
+    var id = token_controller.get_id(token)
+    result = crud_contatos.excluir_contato(id_contato)
+    if(result == false){
+        res.render("error/error_500.html")
+    } else {
+        return result
+    }
+}
+
 module.exports.editar_contato = editar_contato
+module.exports.excluir_contato = excluir_contato
