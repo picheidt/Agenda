@@ -1,12 +1,13 @@
 const connection = require('./con_bd')
 const deasync = require('deasync')
 
-function salvar(id, nome, email, tel) {
+function salvar(nome, email, tel, id_usuario) {
     conn = connection()
     try {
-        conn.query("INSERT INTO Contatos(nome, email, telefone) VALUES (?, ?, ?) where id_usuario = ?", [id, nome, email, tel])
+        conn.query("INSERT INTO Contatos(nome, email, telefone, id_usuario) VALUES (?, ?, ?, ?)", [nome, email, tel, id_usuario])
     } catch (error) {
-        res.send('Erro ao editar contato' + error)
+        console.log(error)
+        return false
     }
 }
 

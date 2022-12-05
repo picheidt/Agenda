@@ -30,9 +30,9 @@
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="justify-content-end navbar-nav ms-auto">
-                        <li class="nav-item"><a href="#" class="nav-link" title="Novo contato">Novo Contato</a></li>
-                        
-                        <li class="nav-item"><a title="Sair" href="logout" class="nav-link active">Sair</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link active" title="Novo contato">Contatos</a></li>
+                        <li class="nav-item"><a href="novo_contato" class="nav-link" title="Novo contato">Novo Contato</a></li>
+                        <li class="nav-item"><a title="Sair" href="logout" class="nav-link">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +41,14 @@
 
     <div class="container-fluid pt-5 mt-5">
         <main class="container">
-            
+            <div id="msg"></div>
+            <script>
+                let msg = "{{message}}"
+                console.log(msg)
+                if (msg != '') {
+                  document.getElementById('msg').innerHTML = '<div class="alert alert-success alert-dismissible fade show fw-normal mb-3 pb-3" role="alert">{{message}}</div>'
+                }
+            </script>
             <table class="table">
                 <thead>
                     <tr>

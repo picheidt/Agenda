@@ -48,18 +48,18 @@ function excluir_contato(req_res){
 function salvar_contato(req, res) {
     
     token = req.cookies['x-access-token']
-    var id = token_controller.get_id(token)
-
+    var id_usuario = token_controller.get_id(token)
     var nome = req.body.nome
     var email = req.body.email
-    var tel = req.body.fone
+    var tel = req.body.telefone
 
-    result = crud_contatos.salvar(id, nome, email, tel, id_contato)
+    flag = crud_contatos.salvar(nome, email, tel, id_usuario)
 
-    if (result==false){
+    if (flag==false){
         res.render('error/error_500.html')
     }else{
-        return result
+        req.flash('message', 'cadastrado com sucesso')   
+        res.redirect('contatos')   
     }
 }
 

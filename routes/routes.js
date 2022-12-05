@@ -6,7 +6,6 @@ const token_controller = require('../controller/token_controller')
 const verifyToken = token_controller.verify_token
 
 //Login
-
 router.get('/', (req, res) => {
     res.redirect('/login')
 })
@@ -25,18 +24,18 @@ router.get('/logout', verifyToken, (req, res) => {
 
 //Cadastro 
 
-router.get('/cadastro', (req, res) =>{
+router.get('/novo_contato', verifyToken, (req, res) =>{
     res.render('cadastro.html')
 })
 
-router.post('/salvar_contato', (req,res) =>{
-    res.render(contatos_controller.salvar_contato(req, res))
+router.post('/salvar_contato', verifyToken, (req,res) =>{
+    contatos_controller.salvar_contato(req, res)
 })
 
 // Contatos
 
 router.get('/contatos', verifyToken, (req, res) =>{
-    res.render('listar.html')
+    res.render('listar.html', {message: req.flash('message')})
 })
 
 router.get('/listar_contatos', verifyToken, (req, res) => {

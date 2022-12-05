@@ -28,7 +28,7 @@
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="justify-content-end navbar-nav ms-auto">
-                        <li class="nav-item"><a title="Cadastro" href="#" class="nav-link active">Cadastro</a></li>
+                        <li class="nav-item"><a title="Novo Contato" href="#" class="nav-link active">Novo Contato</a></li>
                         <li class="nav-item"><a title="Contatos" href="contatos" class="nav-link">Contatos</a></li>
                         <li class="nav-item"><a title="Sair" href="logout" class="nav-link">Sair</a></li>
                     </ul>
@@ -36,48 +36,38 @@
             </div>
         </nav>
     </div>
-
     <div class="container-fluid pt-5 mt-5">
-        <main class="container">
-            <table class="table" id="a">
-                <thead>
-                    <tr>
-                        <th>
-                            <h1><center>Novo Contato</center></h1>
-                        </th>
-
-                    </tr>
-                </thead>
-
-                <tbody id="table">
-
-                </tbody>
-            </table>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 align-self-center pt-1">
+                        <h1 class="text-dark display-5 text-center mt-5">Cadastro De Contatos</h1>
+                    </div>
+                </div>
+            </div>
+            
             <form method="post" action="salvar_contato" name="NovoContato">
-
-
-                <label for="nome">
-                    <h5>Nome</h5>
-                </label>
-                <br>
-                <input type="text" id="idnome" placeholder="" required="required" name="nome" size="50" />
-                <br>
-                <br>
-                <label for="email">
-                    <h5>E-mail</h5>
-                </label>
-                <br>
-                <input type="email" id="idemail" placeholder="" required="required" name="email" size="50" />
-                <br>
-                <br>
-                <label for="fone">
-                    <h5>Telefone</h5>
-                </label>
-                <br>
-                <input type="tel" id="idfone" placeholder="" required="required" name="fone" size="30" />
-                <br>
-                <br>
-                <input type="submit" class="enviar" value="Salvar Contato" />
+                <div class="container">
+                    <fieldset>
+                        <div class="row g-3 mt-2 text-dark col-md-12 border border-dark border-top-0 border-start-0 border-end-0 border-2 rounded">
+                            <div class="form-group col-md-4 mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" id="nome" class="form-control" name="nome" required>
+                            </div>
+                            <div class="form-group col-md-4 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" name="email" required>
+                            </div>
+                            <div class="form-group col-md-4 mb-3">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="text" id="telefone" class="form-control" name="telefone" required>
+                            </div>
+                            <div class="pt-1 mb-4">
+                                <button title="Cadastrar" class="btn btn-info btn-md btn-block col-12" type="submit">Cadastrar contato</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </form>
         </main>
     </div>
