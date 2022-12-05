@@ -56,3 +56,4 @@ function excluir(id_contato, id_usuario){
 module.exports.salvar = salvar
 module.exports.editar = editar
 module.exports.listar = listar
+module.exports.excluir = excluir
