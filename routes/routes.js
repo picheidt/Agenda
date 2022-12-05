@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const login_controller = require('../controller/login_controller')
-const contatos_controller = require('../controller/contatos.controller')
+const usuario_controller = require('../controller/usuario_controller')
+const contatos_controller = require('../controller/contatos_controller')
 const token_controller = require('../controller/token_controller')
 const verifyToken = token_controller.verify_token
 
@@ -15,7 +15,7 @@ router.get('/login', (req, res)=>{
 })
 
 router.post('/logar', (req, res) => {
-    login_controller.logar(req, res)
+    usuario_controller.logar(req, res)
 })
 
 router.get('/logout', verifyToken, (req, res) => {
