@@ -28,7 +28,7 @@
 
           <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-            <form style="width: 23rem;" method="POST" action="login">
+            <form style="width: 23rem;" method="POST" action="cadastrar_usuario">
               <div id="msg"></div>
               <script>
                 let msg = "{{message}}"
@@ -44,7 +44,7 @@
               </div>
 
               <div class="form-outline mb-4">
-                <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                <input type="password" id="password" name="password" class="form-control form-control-lg" required/>
                 <label class="form-label" for="form2Example28">Senha</label>
               </div>
 

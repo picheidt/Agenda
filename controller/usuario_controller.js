@@ -24,17 +24,17 @@ function cadastrar_usuario(req, res) {
     const pass = req.body.password
     // confere se o login existe
     try {
-        confere = crud_usuario.confere_cadastro(login, pass)
+        confere = crud_usuario.confere_cadastro(login)
         if (confere === false) {
             req.render('error/error_500.html')
-        }else if (confere.length == 0) {
+        } else if (confere.length != 0) {
             req.flash('message', 'Login existente')
             res.redirect('registre-se')
-        }else{
+        } else {
             result = crud_usuario.salvar_usuario(login, pass)
-            if (result==false){
+            if (result == false) {
                 req.render('error/error_500.html')
-            } else{
+            } else {
                 req.flash('message', 'Cadastrado com sucesso!')
                 res.redirect('Login')
             }
