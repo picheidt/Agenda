@@ -24,7 +24,7 @@ router.get('/logout', verifyToken, (req, res) => {
 
 // Cadastro de usuário
 router.get('/registre-se', (req, res)=>{
-    res.render('registre-se.html')
+    res.render('registre-se.html', {message: req.flash('message')})
 })
 
 router.post('/cadastrar_usuario', (req, res)=>{
