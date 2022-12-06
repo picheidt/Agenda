@@ -22,6 +22,15 @@ router.get('/logout', verifyToken, (req, res) => {
     token_controller.invalidate_token(req, res)
 })
 
+// Cadastro de usuário
+router.get('/registre-se', (req, res)=>{
+    res.render('registre-se.html', {message: req.flash('message')})
+})
+
+router.post('/cadastrar_usuario', (req, res)=>{
+    usuario_controller.cadastrar_usuario(req, res)
+})
+
 // Contatos
 router.get('/novo_contato', verifyToken, (req, res) =>{
     res.render('cadastro.html')
@@ -53,11 +62,6 @@ router.post('/editar_contato', verifyToken, (req, res) => {
 router.get('/excluir_contato', verifyToken, (req, res) => {
     contatos_controller.excluir_contato(req, res)
 })
-
-
-
-
-
 
 // redireciona todas as rotas não existentes para a página de página não encontrada
 router.get('*', (req, res) => {

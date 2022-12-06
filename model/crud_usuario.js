@@ -4,32 +4,57 @@ function confere_login(login, pass) {
     var result_db = null
     try {
         conn = conexao()
-        conn.query('SELECT id_usuario FROM usuario WHERE login = ? AND senha = ?', [login, pass],function(err, result){
-            if(err){
+        conn.query('SELECT id_usuario FROM usuario WHERE login = ? AND senha = ?', [login, pass], function (err, result) {
+            if (err) {
                 result_db = false
-            }else{
-                result_db = result               
+            } else {
+                result_db = result
             }
             return result_db
         })
-        
-        while ((result_db==null)) {
+
+        while ((result_db == null)) {
             deasync.runLoopOnce()
         }
-           
+
         return result_db
     } catch (error) {
-        return false   
+        return false
     }
 }
 
-function salvar(nome, email, tel) {
+function confere_cadastro(login) {
+    var result_db = null
     try {
-        connection.query("INSERT INTO usuario(login,senha) VALUES (?, ?)", [nome, email, tel])
-        window.alert('Usuário Salvo!')
+        conn = conexao()
+        conn.query('SELECT id_usuario FROM usuario WHERE login = ?', [login], function (err, result) {
+            if (err) {
+                result_db = false
+            } else {
+                result_db = result
+            }
+            return result_db
+        })
+
+        while ((result_db == null)) {
+            deasync.runLoopOnce()
+        }
+
+        return result_db
     } catch (error) {
-        window.alert('Erro ao salvar Usuário:' + error)
+        return false
+    }
+}
+
+function salvar_usuario(login, pass) {
+    try {
+        conn = conexao()
+        conn.query("INSERT INTO usuario(login,senha) VALUES (?, ?)", [login, pass])
+    } catch (error) {
+        return false
     }
 }
 
 module.exports.confere_login = confere_login
+module.exports.confere_cadastro = confere_cadastro
+module.exports.salvar_usuario = salvar_usuario
