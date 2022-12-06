@@ -1,8 +1,7 @@
 require("dotenv-safe").config();
-// const mysql=require('mysql2');
-const mysql=require('mysql-simple-pool');
+const mysql=require('mysql2');
 function connect_mysql(){
-    const connection = new mysql(100, {
+    const connection = mysql.createConnection({
         host: process.env.HOST,
         user: process.env.USER,
         password: process.env.PASS,
@@ -10,7 +9,7 @@ function connect_mysql(){
         database: process.env.DATABASE
     })
 
-    // connection.connect()    
+    connection.connect()    
     return connection
 }
 
