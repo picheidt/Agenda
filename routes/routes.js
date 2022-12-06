@@ -39,10 +39,16 @@ router.get('/listar_contatos', verifyToken, (req, res) => {
     res.send(contatos_controller.buscar_contatos(req, res))
 })
 
-router.post('/editar_contato', verifyToken, (req, res) => {
-    res.render(contatos_controller.editar_contato(req, res))
+router.get('/editar', verifyToken, (req, res) => {
+    result = contatos_controller.buscar_contato_unico(req, res)[0]
+    res.render('edit.html', {id:result.id_contato, nome:result.nome, email:result.email, telefone:result.telefone})
 })
 
+router.post('/editar_contato', verifyToken, (req, res) => {
+    contatos_controller.editar_contato(req, res)
+    req.flash('message', 'Atualizado com Sucesso')
+    res.redirect('contatos')
+})
 
 router.get('/excluir_contato', verifyToken, (req, res) => {
     contatos_controller.excluir_contato(req, res)

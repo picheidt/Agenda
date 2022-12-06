@@ -34,13 +34,11 @@ function listar(id) {
 function editar(id, nome, email, tel, id_contato) {
     conn = connection()
     try {
-        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ? and id_usuario = ?", [id, nome, email, tel, id_contato],)
+        conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ? and id_usuario = ?", [nome, email, tel, id_contato, id])
     } catch (error) {
-        res.send('Erro ao editar contato' + error)
+        return false
     }
 }
-
-
 
 function excluir(id_contato, id_usuario){
     conn = connection()
@@ -52,8 +50,28 @@ function excluir(id_contato, id_usuario){
     }
 }
 
+function buscar_especifico(id_contato, id_usuario){
+    conn = connection()
+    contatos = null
+    try {
+        conn.query("SELECT id_contato, nome, telefone, email FROM contatos WHERE id_usuario = ? AND id_contato = ?", [id_usuario, id_contato], function(err, result){
+            if (err) {
+                contatos = false                
+            }else{
+                contatos = result
+            }
+        })
+        while ((contatos == null)) {
+            deasync.runLoopOnce()
+        }
+        return contatos
+    } catch (error) {
+        return false        
+    }
+}
 
 module.exports.salvar = salvar
 module.exports.editar = editar
 module.exports.listar = listar
 module.exports.excluir = excluir
+module.exports.buscar_especifico = buscar_especifico
