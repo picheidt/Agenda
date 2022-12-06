@@ -5,8 +5,9 @@ function salvar(nome, email, tel, id_usuario) {
     conn = connection()
     try {
         conn.query("INSERT INTO Contatos(nome, email, telefone, id_usuario) VALUES (?, ?, ?, ?)", [nome, email, tel, id_usuario])
+        conn.end()
     } catch (error) {
-        console.log(error)
+        conn.end()
         return false
     }
 }
@@ -25,8 +26,10 @@ function listar(id) {
         while ((contatos == null)) {
             deasync.runLoopOnce()
         }
+        conn.end()
         return contatos
     } catch (error) {
+        conn.end()
         return false        
     }
 }
@@ -35,7 +38,9 @@ function editar(id, nome, email, tel, id_contato) {
     conn = connection()
     try {
         conn.query("UPDATE Contatos SET nome = ?, email = ?, telefone = ? where id_contato = ? and id_usuario = ?", [nome, email, tel, id_contato, id])
+        conn.end()
     } catch (error) {
+        conn.end()
         return false
     }
 }
@@ -44,8 +49,9 @@ function excluir(id_contato, id_usuario){
     conn = connection()
     try{
         conn.query("DELETE FROM contatos WHERE id_contato = ? AND id_usuario = ?;", [id_contato, id_usuario]);
+        conn.end()
     } catch (error){
-        console.log(error)
+        conn.end()
         return false
     }
 }
@@ -64,8 +70,10 @@ function buscar_especifico(id_contato, id_usuario){
         while ((contatos == null)) {
             deasync.runLoopOnce()
         }
+        conn.end()
         return contatos
     } catch (error) {
+        conn.end()
         return false        
     }
 }

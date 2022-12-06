@@ -35,7 +35,7 @@ function cadastrar_usuario(req, res) {
             if (result == false) {
                 req.render('error/error_500.html')
             } else {
-                req.flash('message', 'Cadastrado com sucesso!')
+                req.flash('success', 'Cadastrado com sucesso!')
                 res.redirect('Login')
             }
         }

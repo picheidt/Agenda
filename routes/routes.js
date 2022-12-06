@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res)=>{
-    res.render('login.html', {message: req.flash('message')})
+    res.render('login.html', {message: req.flash('message'), success: req.flash('success')})
 })
 
 router.post('/logar', (req, res) => {
