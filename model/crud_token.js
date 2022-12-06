@@ -4,7 +4,7 @@ const deasync = require('deasync')
 function insert_token(token){
     conn = conexao()
     conn.query('INSERT INTO token_black_list(token) values(?)', [token])
-    conn.end()
+    // conn.end()
 }
 
 function read_token(token){
@@ -21,7 +21,7 @@ function read_token(token){
     while ((flag == null)) {
         deasync.runLoopOnce()
     }
-    conn.end()
+    // conn.end()
     return flag
 }
 

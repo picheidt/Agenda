@@ -27,6 +27,7 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^8.5.1",
     "mustache": "^4.2.0",
+    "mysql-simple-pool": "^1.0.1",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {

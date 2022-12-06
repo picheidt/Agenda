@@ -6,7 +6,6 @@ function confere_login(login, pass) {
         conn = conexao()
         conn.query('SELECT id_usuario FROM usuario WHERE login = ? AND senha = ?', [login, pass], function (err, result) {
             if (err) {
-                conn.end
                 result_db = false
             } else {
                 result_db = result
@@ -17,10 +16,10 @@ function confere_login(login, pass) {
         while ((result_db == null)) {
             deasync.runLoopOnce()
         }
-        conn.end()
+        // conn.end()
         return result_db
     } catch (error) {
-        conn.end()
+        // conn.end()
         return false
     }
 }
@@ -41,10 +40,10 @@ function confere_cadastro(login) {
         while ((result_db == null)) {
             deasync.runLoopOnce()
         }
-        conn.end()
+        // conn.end()
         return result_db
     } catch (error) {
-        conn.end()
+        // conn.end()
         return false
     }
 }
@@ -53,9 +52,9 @@ function salvar_usuario(login, pass) {
     try {
         conn = conexao()
         conn.query("INSERT INTO usuario(login,senha) VALUES (?, ?)", [login, pass])
-        conn.end()
+        // conn.end()
     } catch (error) {
-        conn.end()
+        // conn.end()
         return false
     }
 }
