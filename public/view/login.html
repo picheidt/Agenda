@@ -17,56 +17,47 @@
 </head>
 
 <body>
-  <section>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6 text-black">
 
-          <div class="px-5 ms-xl-4">
-            <h1>Bem vindo a sua Agenda!</h1>
-          </div>
-          <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-            
-            <form style="width: 23rem;" method="POST" action="logar">
-              <div id="msg"></div>
-              <script>
-                let msg = "{{message}}"
-                if (msg != '') {
-                  document.getElementById('msg').innerHTML = '<div class="alert alert-danger alert-dismissible fade show fw-normal mb-3 pb-3">{{message}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-                }else if ("{{success}}"!='') {
-                  document.getElementById('msg').innerHTML = '<div class="alert alert-success alert-dismissible fade show fw-normal mb-3 pb-3">{{success}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-                }
-              </script>
-              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Entre</h3>
-
-              <div class="form-outline mb-4">
-                <input type="email" id="email" name="email" class="form-control form-control-lg" />
-                <label class="form-label" for="email">E-mail</label>
-              </div>
-
-              <div class="form-outline mb-4">
-                <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                <label class="form-label" for="password">Senha</label>
-              </div>
-
-              <div class="pt-1 mb-4">
-                <button class="btn btn-info btn-lg btn-block" type="submit">Entrar</button>
-              </div>
-              <p>Não tem uma conta? <a href="registre-se" class="link-info">Registre-se!</a></p>
-
-            </form>
-
-          </div>
-
+  <section class="vh-100">
+    <div class="container-fluid vh-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://cdn-icons-png.flaticon.com/512/1034/1034194.png" class="img-fluid" alt="Agenda">
         </div>
-        <div class="col-sm-6 px-0 d-none d-sm-block">
-          <img src="https://cdn-icons-png.flaticon.com/512/1034/1034194.png" alt="Login image" class="w-100 vh-100"
-            style="object-fit: fill; object-position: left;">
+
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <div id="msg"></div>
+          <script>
+            let msg = "{{message}}"
+            if (msg != '') {
+              document.getElementById('msg').innerHTML = '<div class="alert alert-danger alert-dismissible fade show fw-normal mb-3 pb-3">{{message}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+            } else if ("{{success}}" != '') {
+              document.getElementById('msg').innerHTML = '<div class="alert alert-success alert-dismissible fade show fw-normal mb-3 pb-3">{{success}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+            }
+          </script>
+          <form method="POST" action="logar">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="email">Login</label>
+              <input type="email" id="email" name="email" class="form-control form-control-lg"
+                placeholder="Informe seu Email" />
+            </div>
+
+            <div class="form-outline mb-3">
+              <label class="form-label" for="password">Senha</label>
+              <input type="password" id="password" name="password" class="form-control form-control-lg"
+                placeholder="Informe sua Senha" />
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta? <a href="registre-se"
+                  class="link-info">Registra-se !</a></p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </section>
- 
 </body>
-
 </html>
