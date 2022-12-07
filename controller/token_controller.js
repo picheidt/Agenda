@@ -4,7 +4,7 @@ const deasync = require('deasync')
 const crud_token = require('../model/crud_token')
 
 function create_token(id){
-    const token = jwt.sign({id}, process.env.SECRET, {expiresIn: 86400})
+    const token = jwt.sign({id}, process.env.SECRET, {expiresIn: 10800})
     return token
 }
 
