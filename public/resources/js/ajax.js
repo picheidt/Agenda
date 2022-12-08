@@ -1,6 +1,5 @@
 function carregar_contatos(){
     cookie = document.cookie
-    console.log('oi')
     token = cookie.split('; ').find((row) => row.startsWith('x-access-token='))?.split('=')[1]
     html = ''
     $.ajax({

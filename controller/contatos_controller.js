@@ -25,6 +25,24 @@ function buscar_contato_unico(req, res){
     }
 }
 
+function salvar_contato(req, res) {
+    
+    token = req.cookies['x-access-token']
+    var id_usuario = token_controller.get_id(token)
+    var nome = req.body.nome
+    var email = req.body.email
+    var tel = req.body.telefone
+    
+    flag = crud_contatos.salvar(nome, email, tel, id_usuario)
+    
+    if (flag==false){
+        res.render('error/error_500.html')
+    }else{
+        req.flash('message', 'cadastrado com sucesso')   
+        res.redirect('contatos')   
+    }
+}
+
 function editar_contato(req, res) {
     token = req.cookies['x-access-token']
     var id_usuario = token_controller.get_id(token)
@@ -49,24 +67,6 @@ function excluir_contato(req, res){
     } else {
         req.flash('message', 'Contato excluido com sucesso')
         res.redirect('contatos')
-    }
-}
-
-function salvar_contato(req, res) {
-    
-    token = req.cookies['x-access-token']
-    var id_usuario = token_controller.get_id(token)
-    var nome = req.body.nome
-    var email = req.body.email
-    var tel = req.body.telefone
-    
-    flag = crud_contatos.salvar(nome, email, tel, id_usuario)
-    
-    if (flag==false){
-        res.render('error/error_500.html')
-    }else{
-        req.flash('message', 'cadastrado com sucesso')   
-        res.redirect('contatos')   
     }
 }
 
